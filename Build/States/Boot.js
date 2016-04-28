@@ -2,10 +2,11 @@
  * Created by Victoria Russell B00256311
  */
 
-var Match3 = Match3 || {};
+//Game object 
+var BattleQ = BattleQ || {};
 
 //Setting game configurationand loading the assets for the loading screen
-Match3.BootState = {
+BattleQ.BootState = {
     init:function(){
         //Loading screen will have a white background
         this.game.stage.backgroundColor = '#fff';
