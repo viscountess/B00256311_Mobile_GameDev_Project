@@ -6,7 +6,6 @@
 //Once this works, then I will move onto the battle part
 
 
-//Game object 
 var BattleQ = BattleQ || {};
 
 //Setting the dimensions of our board
@@ -14,8 +13,8 @@ var BattleQ = BattleQ || {};
 BattleQ.game = new Phaser.Game(360, 640, Phaser.AUTO);
 
 //States
-BattleQ.game.state.add('Boot', Match3.BootState);
-BattleQ.game.state.add('Preload', Match3.PreloadState);
-BattleQ.game.state.add('Game', Match3.GameState);
+BattleQ.game.state.add('Boot', BattleQ.BootState);
+BattleQ.game.state.add('Preload', BattleQ.PreloadState);
+BattleQ.game.state.add('Game', BattleQ.GameState);
 
 BattleQ.game.state.start('Boot');
