@@ -2,21 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e5855361-188f-497e-b311-d93f75f5a257" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/images/backyard2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/images/preloader-bar.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/phaser.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/prefabs/Block.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/prefabs/Board.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/states/Boot.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/states/Game.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/states/Preload.js" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/backgroundBase.png" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/preloader-bar.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/States/Boot.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/States/Preload.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/main.js" afterPath="$PROJECT_DIR$/js/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/prefabs/Board.js" afterPath="$PROJECT_DIR$/js/prefabs/Board.js" />
     </list>
     <ignored path="Build.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -100,8 +88,8 @@
       <file leaf-file-name="Board.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/prefabs/Board.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="139">
-              <caret line="112" column="2" selection-start-line="112" selection-start-column="2" selection-end-line="112" selection-end-column="2" />
+            <state relative-caret-position="326">
+              <caret line="147" column="0" selection-start-line="147" selection-start-column="0" selection-end-line="147" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -355,12 +343,12 @@
       <updated>1459510232580</updated>
       <workItem from="1459510234338" duration="8907000" />
       <workItem from="1461852555390" duration="13608000" />
-      <workItem from="1461869360950" duration="9237000" />
+      <workItem from="1461869360950" duration="10877000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31752000" />
+    <option name="totallyTimeSpent" value="33392000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="960" y="0" width="960" height="1040" extended-state="0" />
@@ -481,8 +469,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/prefabs/Board.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="112" column="2" selection-start-line="112" selection-start-column="2" selection-end-line="112" selection-end-column="2" />
+        <state relative-caret-position="326">
+          <caret line="147" column="0" selection-start-line="147" selection-start-column="0" selection-end-line="147" selection-end-column="0" />
           <folding />
         </state>
       </provider>

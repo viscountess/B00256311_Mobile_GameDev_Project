@@ -129,3 +129,61 @@ BattleQ.Board.prototype.checkAdjacent = function(source, target) {
   //Or false, meaning that it cant be swapped
       return isAdjacent;
 };
+
+/*
+  Check whether a single block is chained or not
+ */
+BattleQ.Board.prototype.isChained = function(block)
+{
+  var isChained = false;
+  var variation = this.grid[block.row][block.col];
+  var tRow = block.row; //tRow = temp row
+  var tCol = block.col; //tCol = temp col
+
+  //Left
+  if(variation == this.grid[tRow][tCol - 1] && variation == this.grid[tRow][tCol - 2])
+  {
+    isChained = true;
+  }
+
+  //Right
+  if(variation == this.grid[tRow][tCol + 1] && variation == this.grid[tRow][tCol + 2])
+  {
+    isChained = true;
+  }
+
+  //Up
+  if(this.grid[tRow-2]) //extra check to ensure there is 2 or more block above target
+  {
+    if(variation == this.grid[tRow - 1][tCol] && variation == this.grid[tRow - 2][tCol])
+    {
+      isChained = true;
+    }
+  }
+
+  //Down
+  if(this.grid[tRow+2]) //extra check to ensure there is 2 or more block below target
+  {
+    if(variation == this.grid[tRow + 1][tCol] && variation == this.grid[tRow + 2][tCol])
+    {
+      isChained = true;
+    }
+  }
+
+  //Center - horizontal
+  if(variation == this.grid[tRow][tCol - 1] && variation == this.grid[tRow][tCol + 1])
+  {
+    isChained = true;
+  }
+
+  //Center - vertical
+  if(this.grid[tRow+1] && this.grid[tRow-1]) //extra check to prevent error
+  {
+    if(variation == this.grid[tRow + 1][tCol] && variation == this.grid[tRow - 1][tCol])
+    {
+      isChained = true;
+    }
+  }
+
+  return isChained;
+};
