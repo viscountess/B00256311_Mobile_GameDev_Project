@@ -46,12 +46,10 @@ BattleQ.Board = function(state, rows, cols, blockVariations) {
 //& in each case, generate a random number
 //A number will, in theory, represent a block variation
 BattleQ.Board.prototype.populateGrid = function(){
-  var i, j, variation;
-  for(i = 0; i < this.rows; i++)
-  {
-    for(j = 0; j < this.cols; j++)
-    {
-      variation = Math.floor(Math.random() * this.blockVariations) +1;
+  var i,j,variation;
+  for(i = 0; i < this.rows; i++) {
+    for(j = 0; j < this.cols; j++) {
+      variation = Math.floor(Math.random() * this.blockVariations) + 1;
       this.grid[i][j] = variation;
     }
   }
@@ -61,12 +59,10 @@ BattleQ.Board.prototype.populateGrid = function(){
 //& in each case, generate a random number
 //A number will, in theory, represent a block variation
 BattleQ.Board.prototype.populateReserveGrid = function(){
-  var i, j, variation;
-  for(i = 0; i < this.RESERVE_ROW; i++)
-  {
-    for(j = 0; j < this.cols; j++)
-    {
-      variation = Math.floor(Math.random() * this.blockVariations) +1;
+  var i,j,variation;
+  for(i = 0; i < this.RESERVE_ROW; i++) {
+    for(j = 0; j < this.cols; j++) {
+      variation = Math.floor(Math.random() * this.blockVariations) + 1;
       this.reserveGrid[i][j] = variation;
     }
   }
@@ -74,40 +70,34 @@ BattleQ.Board.prototype.populateReserveGrid = function(){
 
 //Print out the grids in a nice way
 BattleQ.Board.prototype.consoleLog = function() {
-
-  var i, j, variation;
+  var i,j;
   var prettyString = '';
 
-  for(i = 0; i < this.RESERVE_ROW; i++)
-  {
-    prettyString += '\n'; //new line
-    for(j = 0; j < this.cols; j++)
-    {
+  for(i = 0; i < this.RESERVE_ROW; i++) {
+    prettyString += '\n';
+    for(j = 0; j < this.cols; j++) {
       prettyString += ' ' + this.reserveGrid[i][j];
     }
   }
 
-  prettyString += '\n'; //new line here also
+  prettyString += '\n';
 
   for(j = 0; j < this.cols; j++) {
     prettyString += ' -';
   }
 
-  for(i = 0; i < this.rows; i++)
-  {
-    prettyString += '\n'; //new line
-    for(j = 0; j < this.cols; j++)
-    {
+  for(i = 0; i < this.rows; i++) {
+    prettyString += '\n';
+    for(j = 0; j < this.cols; j++) {
       prettyString += ' ' + this.grid[i][j];
     }
   }
-
   console.log(prettyString);
 };
 
 //Swapping Blocks
 BattleQ.Board.prototype.swap = function(source, target) {
-  var temp = this.grid[target.row][target.col]; //keep track of the target number that player is moving
+  var temp = this.grid[target.row][target.col];
   this.grid[target.row][target.col] = this.grid[source.row][source.col];
   this.grid[source.row][source.col] = temp;
 };
@@ -123,8 +113,7 @@ BattleQ.Board.prototype.checkAdjacent = function(source, target) {
 
   //Check if target cell is adjacent to the cell either above or below
   //Or on its left or right
-  var isAdjacent = (diffInRow == 1 && diffInCol === 0)
-    || (diffInRow === 0 && diffInCol == 1)
+  var isAdjacent = (diffInRow == 1 && diffInCol === 0) || (diffInRow == 0 && diffInCol === 1);
   //If it is, then return true, meaning that it can be swapped
   //Or false, meaning that it cant be swapped
       return isAdjacent;
@@ -137,55 +126,47 @@ BattleQ.Board.prototype.isChained = function(block)
 {
   var isChained = false;
   var variation = this.grid[block.row][block.col];
-  var tRow = block.row; //tRow = temp row
-  var tCol = block.col; //tCol = temp col
+  var row = block.row;
+  var col = block.col;
 
-  //Left
-  if(variation == this.grid[tRow][tCol - 1] && variation == this.grid[tRow][tCol - 2])
-  {
+  //left
+  if(variation == this.grid[row][col - 1] && variation == this.grid[row][col - 2]) {
     isChained = true;
   }
 
-  //Right
-  if(variation == this.grid[tRow][tCol + 1] && variation == this.grid[tRow][tCol + 2])
-  {
+  //right
+  if(variation == this.grid[row][col + 1] && variation == this.grid[row][col + 2]) {
     isChained = true;
   }
 
-  //Up
-  if(this.grid[tRow-2]) //extra check to ensure there is 2 or more block above target
-  {
-    if(variation == this.grid[tRow - 1][tCol] && variation == this.grid[tRow - 2][tCol])
-    {
+  //up
+  if(this.grid[row-2]) {
+    if(variation == this.grid[row-1][col] && variation == this.grid[row-2][col]) {
       isChained = true;
     }
   }
 
-  //Down
-  if(this.grid[tRow+2]) //extra check to ensure there is 2 or more block below target
-  {
-    if(variation == this.grid[tRow + 1][tCol] && variation == this.grid[tRow + 2][tCol])
-    {
+  //down
+  if(this.grid[row+2]) {
+    if(variation == this.grid[row+1][col] && variation == this.grid[row+2][col]) {
       isChained = true;
     }
   }
 
-  //Center - horizontal
-  if(variation == this.grid[tRow][tCol - 1] && variation == this.grid[tRow][tCol + 1])
-  {
+  //center - horizontal
+  if(variation == this.grid[row][col - 1] && variation == this.grid[row][col + 1]) {
     isChained = true;
   }
 
-  //Center - vertical
-  if(this.grid[tRow+1] && this.grid[tRow-1]) //extra check to prevent error
-  {
-    if(variation == this.grid[tRow + 1][tCol] && variation == this.grid[tRow - 1][tCol])
-    {
+  //center - vertical
+  if(this.grid[row+1] && this.grid[row-1]) {
+    if(variation == this.grid[row+1][col] && variation == this.grid[row-1][col]) {
       isChained = true;
     }
   }
 
   return isChained;
+
 };
 
 /*
@@ -209,4 +190,34 @@ BattleQ.Board.prototype.findAllChains = function()
 
   console.log(chained);
   return chained;
+};
+
+/*
+Clear all the chains
+ */
+BattleQ.Board.prototype.clearChains = function()
+{
+  //gets all blocks that need to be cleared
+  var chainedBlocks = this.findAllChains();
+
+  //set them to zero
+  chainedBlocks.forEach(function(block){
+    this.grid[block.row][block.col] = 0;
+  }, this);
+};
+
+/*
+ Drop a block in the main grid from position to another, the source is set to zero
+ */
+BattleQ.Board.prototype.dropBlock = function(sourceRow, targetRow, col){
+  this.grid[targetRow][col] = this.grid[sourceRow][col];
+  this.grid[sourceRow][col] = 0;
+};
+
+/*
+ drop a block in the reserve grid from a position to another. the source is set to zero
+ */
+BattleQ.Board.prototype.dropReserveBlock = function(sourceRow, targetRow, col) {
+  this.grid[targetRow][col] = this.reserveGrid[sourceRow][col];
+  this.reserveGrid[sourceRow][col] = 0;
 };
