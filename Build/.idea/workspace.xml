@@ -89,7 +89,7 @@
         <entry file="file://$PROJECT_DIR$/js/prefabs/Board.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="309">
-              <caret line="215" column="0" selection-start-line="215" selection-start-column="0" selection-end-line="215" selection-end-column="0" />
+              <caret line="254" column="9" selection-start-line="254" selection-start-column="9" selection-end-line="254" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -343,12 +343,12 @@
       <updated>1459510232580</updated>
       <workItem from="1459510234338" duration="8907000" />
       <workItem from="1461852555390" duration="13608000" />
-      <workItem from="1461869360950" duration="19232000" />
+      <workItem from="1461869360950" duration="20141000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41747000" />
+    <option name="totallyTimeSpent" value="42656000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="960" y="0" width="960" height="1040" extended-state="0" />
@@ -472,7 +472,7 @@
     <entry file="file://$PROJECT_DIR$/js/prefabs/Board.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="309">
-          <caret line="215" column="0" selection-start-line="215" selection-start-column="0" selection-end-line="215" selection-end-column="0" />
+          <caret line="254" column="9" selection-start-line="254" selection-start-column="9" selection-end-line="254" selection-end-column="9" />
           <folding />
         </state>
       </provider>
