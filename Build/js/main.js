@@ -8,9 +8,11 @@
 
 var BattleQ = BattleQ || {};
 
+var screenWidth = 640;
+var screenHeight = 640;
 //Setting the dimensions of our board
 //Currently in portrait mode - however I will change this
-BattleQ.game = new Phaser.Game(360, 640, Phaser.AUTO);
+BattleQ.game = new Phaser.Game(screenWidth, screenHeight, Phaser.AUTO);
 
 //States
 BattleQ.game.state.add('Boot', BattleQ.BootState);

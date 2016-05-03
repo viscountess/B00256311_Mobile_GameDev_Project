@@ -17,3 +17,9 @@ BattleQ.Block = function(state, x, y, data) {
 BattleQ.Block.prototype = Object.create(Phaser.Sprite.prototype);
 BattleQ.Block.prototype.constructor = BattleQ.Block;
 
+BattleQ.Block.prototype.reset = function(x, y, data) {
+  Phaser.Sprite.prototype.reset.call(this, x, y);
+  this.loadTexture(data.asset);
+  this.row = data.row;
+  this.col = data.col;
+};
