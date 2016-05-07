@@ -53,6 +53,13 @@ BattleQ.Board.prototype.populateGrid = function(){
       this.grid[i][j] = variation;
     }
   }
+
+  //if there are any chains, re-populate
+  //as we dont want any chains at the start of game
+  var chains = this.findAllChains();
+  if(chains.length > 0) {
+    this.populateGrid();
+  }
 };
 
 // For the reserve grid, iterate through all of the elements
