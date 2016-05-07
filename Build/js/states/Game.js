@@ -59,6 +59,52 @@ BattleQ.GameState = {
     }
 
     this.game.world.bringToTop(this.blocks);
+  },
+  getBlockFromColRow: function(position) {
+    var foundBlock;
+    var didfind = false;
+
+    //console.log("Searching for block at col %i and row %i", position.col, position.row);
+    //console.log("There are %i active blocks", this.blocks.countLiving());
+    this.blocks.forEachAlive(function(block){
+
+      //console.log("    Checking against block - col:%i, row: %i", block.col, block.row);
+
+      if(block.row === position.row && block.col === position.col) {
+        foundBlock = block;
+        didfind = true;
+      }
+    }, this);
+
+    /*if(didfind)
+        console.log("found block with column %i and row %i", position.col, position.row);
+    else
+        console.log("could not find block with column %i and row %i", position.col, position.row);
+    */
+    return foundBlock;
+  },
+
+  dropBlock: function(sourceRow, targetRow, col) {
+    var block = this.getBlockFromColRow({row: sourceRow, col: col});
+    var targetY = 150 + targetRow * (this.BLOCK_SIZE + 6);
+
+    block.row = targetRow;
+
+    var blockMovement = this.game.add.tween(block);
+    blockMovement.to({y: targetY}, this.ANIMATION_TIME);
+    blockMovement.start();
+  },
+
+  dropReserveBlock: function(sourceRow, targetRow, col) {
+    var x = 165 + col * (this.BLOCK_SIZE + 6);
+    var y = -(this.BLOCK_SIZE + 6) * this.board.RESERVE_ROW + sourceRow * (this.BLOCK_SIZE + 6);
+
+    var block = this.createBlock(x, y, {asset: 'block' + this.board.grid[targetRow][col], row: targetRow, col: col});
+    var targetY = 150 + targetRow * (this.BLOCK_SIZE + 6);
+
+    var blockMovement = this.game.add.tween(block);
+    blockMovement.to({y: targetY}, this.ANIMATION_TIME);
+    blockMovement.start();
   }
 
 };

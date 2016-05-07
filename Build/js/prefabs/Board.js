@@ -132,17 +132,23 @@ BattleQ.Board.prototype.isChained = function(block)
   //left
   if(variation == this.grid[row][col - 1] && variation == this.grid[row][col - 2]) {
     isChained = true;
+
+    //console.log("Is left chained: " + isChained);
   }
 
   //right
   if(variation == this.grid[row][col + 1] && variation == this.grid[row][col + 2]) {
     isChained = true;
+
+    //console.log("Is right chained: " + isChained);
   }
 
   //up
   if(this.grid[row-2]) {
     if(variation == this.grid[row-1][col] && variation == this.grid[row-2][col]) {
       isChained = true;
+
+      //console.log("Is up chained: " + isChained);
     }
   }
 
@@ -150,59 +156,62 @@ BattleQ.Board.prototype.isChained = function(block)
   if(this.grid[row+2]) {
     if(variation == this.grid[row+1][col] && variation == this.grid[row+2][col]) {
       isChained = true;
+
+      //console.log("Is down chained: " + isChained);
     }
   }
 
   //center - horizontal
   if(variation == this.grid[row][col - 1] && variation == this.grid[row][col + 1]) {
     isChained = true;
+
+    //console.log("Is center horizontal chained: " + isChained);
   }
 
   //center - vertical
   if(this.grid[row+1] && this.grid[row-1]) {
     if(variation == this.grid[row+1][col] && variation == this.grid[row-1][col]) {
       isChained = true;
+
+      //console.log("Is center - vertical chained: " + isChained);
     }
   }
-
   return isChained;
-
 };
 
 /*
 Find all the chains in the main grid
  */
-BattleQ.Board.prototype.findAllChains = function()
+BattleQ.Board.prototype.findAllChains = function() 
 {
   var chained = [];
   var i, j;
 
-  for(i = 0; i < this.rows; i++)
-  {
-    for(j = 0; j < this.cols; j++)
-    {
-      if(this.isChained({row: i, col:j}))
-      {
-        chained.push({row: i, col:j});
+  for(i = 0; i < this.rows; i++) {
+    for(j = 0; j < this.cols; j++) {
+      if(this.isChained({row: i, col: j})) {
+        chained.push({row: i, col: j});
       }
     }
   }
-
-  console.log(chained);
   return chained;
 };
+
 
 /*
 Clear all the chains
  */
-BattleQ.Board.prototype.clearChains = function()
-{
+BattleQ.Board.prototype.clearChains = function(){
   //gets all blocks that need to be cleared
   var chainedBlocks = this.findAllChains();
 
   //set them to zero
   chainedBlocks.forEach(function(block){
     this.grid[block.row][block.col] = 0;
+
+    //kill the block object
+    this.state.getBlockFromColRow(block).kill();
+
   }, this);
 };
 
@@ -212,6 +221,8 @@ BattleQ.Board.prototype.clearChains = function()
 BattleQ.Board.prototype.dropBlock = function(sourceRow, targetRow, col){
   this.grid[targetRow][col] = this.grid[sourceRow][col];
   this.grid[sourceRow][col] = 0;
+
+  this.state.dropBlock(sourceRow, targetRow, col);
 };
 
 /*
@@ -220,6 +231,8 @@ BattleQ.Board.prototype.dropBlock = function(sourceRow, targetRow, col){
 BattleQ.Board.prototype.dropReserveBlock = function(sourceRow, targetRow, col) {
   this.grid[targetRow][col] = this.reserveGrid[sourceRow][col];
   this.reserveGrid[sourceRow][col] = 0;
+
+  this.state.dropReserveBlock(sourceRow, targetRow, col);
 };
 
 /*
