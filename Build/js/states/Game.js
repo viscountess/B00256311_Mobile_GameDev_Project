@@ -122,8 +122,7 @@ BattleQ.GameState = {
         var chains = this.board.findAllChains();
 
         if(chains.length > 0) {
-          this.board.clearChains();
-          this.board.updateGrid();
+          this.updateBoard();
         }
         else {
           //swap blocks back to original positions if they dont match within a chain
@@ -183,5 +182,23 @@ BattleQ.GameState = {
     //reset the scale of the block
     this.blocks.setAll('scale.x', 1);
     this.blocks.setAll('scale.y', 1);
+  },
+
+  updateBoard: function() {
+    this.board.clearChains();
+    this.board.updateGrid();
+
+    //after the dropping has ended
+    this.game.time.events.add(this.ANIMATION_TIME, function(){
+      //see if there are new chains
+      var chains = this.board.findAllChains();
+
+      if(chains.length > 0) {
+        this.updateBoard();
+      }
+      else {
+        this.clearSelection();
+      }
+    }, this);
   }
 };
