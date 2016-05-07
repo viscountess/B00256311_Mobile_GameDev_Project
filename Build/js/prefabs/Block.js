@@ -15,6 +15,10 @@ BattleQ.Block = function(state, x, y, data) {
 
   this.anchor.setTo(0.5);
 
+  //listen for input
+  this.inputEnabled = true;
+  this.events.onInputDown.add(state.pickBlock, this.state);
+
 };
 
 BattleQ.Block.prototype = Object.create(Phaser.Sprite.prototype);
