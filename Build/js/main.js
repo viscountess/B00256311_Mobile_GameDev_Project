@@ -16,6 +16,7 @@ BattleQ.game = new Phaser.Game(screenWidth, screenHeight, Phaser.AUTO);
 
 //States
 BattleQ.game.state.add('Boot', BattleQ.BootState);
+BattleQ.game.state.add('Menu', BattleQ.MenuState);
 BattleQ.game.state.add('Preload', BattleQ.PreloadState);
 BattleQ.game.state.add('Game', BattleQ.GameState);
 

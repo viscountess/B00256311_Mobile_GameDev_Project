@@ -22,6 +22,6 @@ BattleQ.BootState = {
     this.load.image('bar', 'assets/images/preloader-bar.png');
   },
   create: function() {
-    this.state.start('Preload');
+    this.state.start('Menu');
   }
 };

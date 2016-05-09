@@ -1,5 +1,8 @@
 /**
  * Created by Victoria Russell B00256311
+ *
+ * Used for reference:
+ * http://www.emanueleferonato.com/2014/06/18/creation-of-a-match-3-game-like-farm-heroes-saga-using-any-language-step-3-adding-tiles-to-stage/
  */
 
 var BattleQ = BattleQ || {};
